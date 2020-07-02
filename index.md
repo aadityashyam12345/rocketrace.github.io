@@ -4,3 +4,12 @@
 
 layout: home
 ---
+{% highlight python linenos %}
+
+def add(a: int, b: int) -> int:
+    '''Adds two integers together'''
+    return a + b
+
+{% endhighlight %}
+
+{{ page.name }}
