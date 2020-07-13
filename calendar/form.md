@@ -2,6 +2,7 @@
 layout: default
 title: Get Calendar
 permalink: /calendar/form
+exclude: true
 ---
 
 Form input: Grade

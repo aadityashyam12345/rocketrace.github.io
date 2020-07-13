@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Calendar Guides
+title: Guides
 permalink: /calendar/guide
 ---

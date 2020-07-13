@@ -2,6 +2,7 @@
 layout: default
 title: Your Calendar
 permalink: /calendar/download
+exclude: true
 ---
 
 Loading...

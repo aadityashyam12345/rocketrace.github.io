@@ -1,6 +1,7 @@
 ---
 layout: default
-title: CA Calendar
+title: Get Calendar
+menu: main
 ---
 
 Get your calendar here!
