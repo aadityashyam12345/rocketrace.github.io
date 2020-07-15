@@ -1,1 +1,1 @@
-"use strict";
+"use strict";function loadFile(e){var t=new XMLHttpRequest;return t.open("GET",e,!1),t.send(),200==t.status?t.responseText:null}exports.__esModule=!0;

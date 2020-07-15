@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
-        "strict": true
+        "strict": true,
+        "resolveJsonModule": true
     },
     "files": [
         "form.ts",
-        "calendar.ts"
+        "calendar.ts",
     ]
 }

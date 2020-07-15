@@ -9,4 +9,8 @@ Loading...
 
 (trigger calendar.js)
 
-Once done, download zipped calendar file
+Once done, download zipped calendar file (button)
+
+Here's how to import this into ((whatever))
+
+(((link to /guides)))
