@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "strict": true,
-        "resolveJsonModule": true
     },
     "files": [
         "form.ts",
