@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
         "strict": true,
+        "target": "ES2015"
     },
     "files": [
-        "form.ts",
-        "calendar.ts",
+        "src/form.ts",
+        "src/calendar.ts",
     ]
 }

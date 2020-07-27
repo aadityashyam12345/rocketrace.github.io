@@ -4,3 +4,4 @@ _site
 .jekyll-metadata
 vendor
 compile.sh
+node_modules

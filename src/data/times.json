@@ -1,34 +1,45 @@
 {
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "dp": [
-        {
-            "name": "Monday",
-            "lessons": [
-                
-            ]
-        },
-        {
-            "name": "Tuesday",
-            "lessons": [
-                
-            ]
-        },
-        {
-            "name": "Wednesday",
-            "lessons": [
-                
-            ]
-        },
-        {
-            "name": "Thursday",
-            "lessons": [
-                
-            ]
-        },
-        {
-            "name": "Friday",
-            "lessons": [
-                
-            ]
-        }
+        [
+            {
+                "startHours": 8,
+                "startMinutes": 30,
+                "endHours": 9,
+                "endMinutes": 30
+            }
+        ],
+        [
+            {
+                "startHours": 8,
+                "startMinutes": 30,
+                "endHours": 9,
+                "endMinutes": 30
+            }
+        ],
+        [
+            {
+                "startHours": 9,
+                "startMinutes": 30,
+                "endHours": 10,
+                "endMinutes": 30
+            }
+        ],
+        [
+            {
+                "startHours": 8,
+                "startMinutes": 30,
+                "endHours": 9,
+                "endMinutes": 30
+            }
+        ],
+        [
+            {
+                "startHours": 8,
+                "startMinutes": 30,
+                "endHours": 9,
+                "endMinutes": 30
+            }
+        ]
     ]
 }
