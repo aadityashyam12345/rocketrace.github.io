@@ -45,7 +45,7 @@ function leftPad(str: string, char: string, length: number): string {
  * @param date The date to be formatted.
  */
 function fmtDate(date: Date): string {
-    // y2k bug incoming
+    // y10k bug incoming
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -336,17 +336,21 @@ function makeCalendar(
     let calendar = makeIcal(rawCalendar);
     console.log("Generated iCal calendar contents.");
     console.log(calendar);
+    saveResult(calendar);
     return null;
 }
 
 /**
- * Triggers a download on the webpage, downloading a text file with the specified
- * name and content.
- * @param content The content of the file to be downloaded.
- * @param name The file name.
+ * Updates a hidden div on the page if its id is "calendar-result"
+ * @param content The content to place into the div.
  */
-function downloadCalendar(content: string, name: string) {
-    let x = Array.from("");
+function saveResult(content: string) {
+    let div = document.getElementById("calendar-result");
+    if (div === null) {
+        console.log("Could not find div with id 'calendar-result'");
+        return
+    }
+    div.innerHTML = content;
 }
 
 const choices = {
@@ -359,4 +363,9 @@ const choices = {
     "7": "a",
 }
 
-makeCalendar("dp", choices);
+window.onload = init;
+
+function init() {
+    makeCalendar("dp", choices);
+}
+    
