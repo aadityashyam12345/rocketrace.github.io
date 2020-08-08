@@ -15,12 +15,5 @@ Here's how to import this into ((whatever))
 
 (((link to /guides)))
 <script src="/src/calendar.js"></script>
-<script src="http://danml.com/js/download.js"></script>
 <button id="aaaaa">yahoo</button>
 <div id="calendar-result" hidden=true>test</div>
-<script>
-    function fn() {
-        download(document.getElementById("calendar-result").textContent, "calendar.ics", "text/ics")
-    }
-    document.getElementById("aaaaa").onclick = fn
-</script>

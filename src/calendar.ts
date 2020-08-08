@@ -278,7 +278,7 @@ function makeEventIcal(event: Lesson, now: string, counter: number): string {
 function makeCalendar(
     grade: "pyp" | "myp" | "dp",
     choices: LessonChoices
-): string[] | null {
+): string | null{
     const csvFile = loadFile("/src/data/calendar.csv");
     const timesFile = loadFile("/src/data/times.json");
     const rotationFile = loadFile("/src/data/rotation.json");
@@ -337,7 +337,7 @@ function makeCalendar(
     console.log("Generated iCal calendar contents.");
     console.log(calendar);
     saveResult(calendar);
-    return null;
+    return calendar;
 }
 
 /**
@@ -353,6 +353,18 @@ function saveResult(content: string) {
     div.innerHTML = content;
 }
 
+function download(filename: string, text: string) {
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/ics;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+}
+
 const choices = {
     "test": "My Lesson Is Called Test",
     "2": "AAAA",
@@ -366,6 +378,9 @@ const choices = {
 window.onload = init;
 
 function init() {
-    makeCalendar("dp", choices);
+    let x = makeCalendar("dp", choices);
+    if (x !== null) {
+        download("calendar.ics", x);
+    }
 }
     
