@@ -39,6 +39,13 @@ function leftPad(str: string, char: string, length: number): string {
     builder.push(str);
     return builder.join("");
 }
+/**
+ * Clones a date. Strips time information.
+ * @param date The date to copy.
+ */
+function copyDate(date: Date): Date {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate())
+}
 
 /**
  * Formats a date into a iCal-friendly string.
@@ -57,7 +64,7 @@ function fmtDate(date: Date): string {
     const hh = leftPad(hours.toString(), "0", 2);
     const mm = leftPad(minutes.toString(), "0", 2);
     const ss = leftPad(seconds.toString(), "0", 2);
-    return `${year}${mo}${dd}T${hh}${mm}${ss}Z`;
+    return `${year}${mo}${dd}T${hh}${mm}${ss}`;
 }
 
 /**
@@ -65,7 +72,7 @@ function fmtDate(date: Date): string {
  */
 interface CalendarDay {
     /**
-     * Rotation day, from 0 (Day 1) to 8 (Day 9)
+     * Rotation day, from 0 (Day 1A) to 8 (Day 9A) to 9 (Day 1B) to 17 (Day 9B)
      */
     rotationDay: number,
     /**
@@ -89,14 +96,20 @@ function dayKey(day: CalendarDay): string {
 /**
  * Parses a CSV entry and returns a `CalendarDay` that represents it.
  * @param entry The CSV entry string to parse.
+ * @param days A list of strings to search the entry from.
+ * @param firstHalf A boolean that, when true, only considers the *first* 9 days are being considered
  */
-function bridgeDay(entry: string, days: string[]): CalendarDay {
+function bridgeDay(entry: string, days: string[], firstHalf: boolean): CalendarDay {
     // CSV headers are defined as:
     // Name, Date, Start, End, Notes, Details, Type
     const split = entry.split(",");
-    const rotationDay = days.indexOf(split[0].substring(1, split[0].length - 1));
+    // This is offset by 9 every other week.
+    // Strictly speaking, only the 8th (zero-indexed) and 17th entries are different.
+    // Therefore, `firstHalt`
+    const rotationDay = days.indexOf(split[0].substring(1, split[0].length - 1)) + (firstHalf ? 0 : 9);
     // The date is in US format: MM/DD/YYYY
     const rawDate = split[1].substring(1, split[1].length - 1).split("/");
+    
     const date = new Date(
         Number(rawDate[2]), 
         Number(rawDate[0]) - 1, // January is the 0th month
@@ -186,6 +199,7 @@ interface RotationLesson {
      * Whether or not the lesson is special
      */
     special: boolean,
+    time: LessonTimes | undefined
 }
 
 /**
@@ -235,6 +249,16 @@ function makeIcal(lessons: Lesson[]) {
     strings.push("VERSION:2.0");
     strings.push("PRODID:-//RocketRace//CA Calendar Generator//EN");
     strings.push("X-WR-CALNAME:Lesson Rotation");
+    // Establish the timezone, since these times are specified as local
+    strings.push("BEGIN:VTIMEZONE");
+    strings.push("TZID:Asia/Tokyo");
+    strings.push("BEGIN:STANDARD");
+    strings.push("DTSTART:20200815T000000");
+    strings.push("TZOFFSETO:+0900");
+    strings.push("TZOFFSETFROM:+0900");
+    strings.push("END:STANDARD");
+    strings.push("END:VTIMEZONE");
+
     // Events
     let counter = 0;
     const now = fmtDate(new Date());
@@ -297,30 +321,36 @@ function makeCalendar(
     let rawCalendar: Lesson[] = [];
     // Each cache entry is a list of Lessons
     let cache: LessonCache = {};
+    let firstHalf = true;
     source.forEach(entry => {
-        let day = bridgeDay(entry, rotation.days);
+        let day = bridgeDay(entry, rotation.days, firstHalf);
+        // On day 9, check the toggle 
+        if (day.rotationDay in [8, 17]) {
+            // Toggle the boolean
+            firstHalf = !firstHalf;
+        }
         let key = dayKey(day);
         if (cache[key] === undefined) {
             for (let i = 0; i < rotation[grade][day.rotationDay].length; i++) {
                 // This assumes that each valid combination of week day and 
                 // rotation has the same amount of lessons
                 const lesson = rotation[grade][day.rotationDay][i];
-                const time = times[grade][day.weekDay][i];
-                // Set time
-                let startTime = day.date;
-                let endTime = day.date;
-                startTime.setHours(time.startHours);
-                startTime.setMinutes(time.startMinutes);
-                endTime.setHours(time.endHours);
-                endTime.setMinutes(time.endMinutes);
+                // If the lesson defines a special time, use that instead of the weekday time
+                const time = lesson.time === undefined ? times[grade][day.weekDay][i] : lesson.time;
+                // Clone the time, to avoid multible mutability
+                let startTime = copyDate(day.date);
+                let endTime = copyDate(day.date);
+                startTime.setHours(time.startHours, time.startMinutes, 0, 0);
+                endTime.setHours(time.endHours, time.endMinutes, 0, 0);
                 // Special lessons override the label
                 let label = "";
                 if (lesson.special) {
-                    label = lesson.label;
+                    label = lesson.label; 
                 }
                 else {
                     label = choices[lesson.id];
                 }
+                
                 rawCalendar.push(new Lesson(
                     lesson.id,
                     label,
@@ -366,13 +396,14 @@ function download(filename: string, text: string) {
 }
 
 const choices = {
-    "test": "My Lesson Is Called Test",
-    "2": "AAAA",
-    "3": "AA",
-    "4": "A",
-    "5": "AWAA",
-    "6": "AAAa",
-    "7": "a",
+    "A": "Lesson A",
+    "B": "Lesson B",
+    "C": "Lesson C",
+    "D": "Lesson D",
+    "E": "Lesson E",
+    "F": "Lesson F",
+    "G": "Lesson G",
+    "H": "Lesson H",
 }
 
 window.onload = init;
@@ -380,7 +411,7 @@ window.onload = init;
 function init() {
     let x = makeCalendar("dp", choices);
     if (x !== null) {
-        download("calendar.ics", x);
+        // download("calendar.ics", x);
     }
 }
     

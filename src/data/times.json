@@ -1,20 +1,57 @@
 {
+    "comment": "Only Wednesday has a different schedule. Note that the days field is used for parsing.",
     "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "dp": [
         [
             {
                 "startHours": 8,
-                "startMinutes": 30,
-                "endHours": 9,
-                "endMinutes": 30
+                "startMinutes": 45,
+                "endHours": 10,
+                "endMinutes": 5
+            },
+            {
+                "startHours": 10,
+                "startMinutes": 15,
+                "endHours": 11,
+                "endMinutes": 35
+            },
+            {
+                "startHours": 12,
+                "startMinutes": 20,
+                "endHours": 14,
+                "endMinutes": 0
+            },
+            {
+                "startHours": 14,
+                "startMinutes": 5,
+                "endHours": 15,
+                "endMinutes": 25
             }
         ],
         [
             {
                 "startHours": 8,
-                "startMinutes": 30,
-                "endHours": 9,
-                "endMinutes": 30
+                "startMinutes": 45,
+                "endHours": 10,
+                "endMinutes": 5
+            },
+            {
+                "startHours": 10,
+                "startMinutes": 15,
+                "endHours": 11,
+                "endMinutes": 35
+            },
+            {
+                "startHours": 12,
+                "startMinutes": 20,
+                "endHours": 14,
+                "endMinutes": 0
+            },
+            {
+                "startHours": 14,
+                "startMinutes": 5,
+                "endHours": 15,
+                "endMinutes": 25
             }
         ],
         [
@@ -22,23 +59,77 @@
                 "startHours": 9,
                 "startMinutes": 30,
                 "endHours": 10,
-                "endMinutes": 30
+                "endMinutes": 25
+            },
+            {
+                "startHours": 10,
+                "startMinutes": 35,
+                "endHours": 11,
+                "endMinutes": 25
+            },
+            {
+                "startHours": 12,
+                "startMinutes": 15,
+                "endHours": 13,
+                "endMinutes": 15
+            },
+            {
+                "startHours": 13,
+                "startMinutes": 25,
+                "endHours": 14,
+                "endMinutes": 25
             }
         ],
         [
             {
                 "startHours": 8,
-                "startMinutes": 30,
-                "endHours": 9,
-                "endMinutes": 30
+                "startMinutes": 45,
+                "endHours": 10,
+                "endMinutes": 5
+            },
+            {
+                "startHours": 10,
+                "startMinutes": 15,
+                "endHours": 11,
+                "endMinutes": 35
+            },
+            {
+                "startHours": 12,
+                "startMinutes": 20,
+                "endHours": 14,
+                "endMinutes": 0
+            },
+            {
+                "startHours": 14,
+                "startMinutes": 5,
+                "endHours": 15,
+                "endMinutes": 25
             }
         ],
         [
             {
                 "startHours": 8,
-                "startMinutes": 30,
-                "endHours": 9,
-                "endMinutes": 30
+                "startMinutes": 45,
+                "endHours": 10,
+                "endMinutes": 5
+            },
+            {
+                "startHours": 10,
+                "startMinutes": 15,
+                "endHours": 11,
+                "endMinutes": 35
+            },
+            {
+                "startHours": 12,
+                "startMinutes": 20,
+                "endHours": 14,
+                "endMinutes": 0
+            },
+            {
+                "startHours": 14,
+                "startMinutes": 5,
+                "endHours": 15,
+                "endMinutes": 25
             }
         ]
     ]
