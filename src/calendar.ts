@@ -343,13 +343,7 @@ function makeCalendar(
                 startTime.setHours(time.startHours, time.startMinutes, 0, 0);
                 endTime.setHours(time.endHours, time.endMinutes, 0, 0);
                 // Special lessons override the label
-                let label = "";
-                if (lesson.special) {
-                    label = lesson.label; 
-                }
-                else {
-                    label = choices[lesson.id];
-                }
+                let label = lesson.special ? lesson.label : choices[lesson.id]
                 
                 rawCalendar.push(new Lesson(
                     lesson.id,
@@ -382,7 +376,11 @@ function saveResult(content: string) {
     }
     div.innerHTML = content;
 }
-
+/**
+ * Downloads an ICS file with a given name and text content.
+ * @param filename The filename to download the file with
+ * @param text The content of the text file
+ */
 function download(filename: string, text: string) {
     let element = document.createElement('a');
     element.setAttribute('href', 'data:text/ics;charset=utf-8,' + encodeURIComponent(text));
