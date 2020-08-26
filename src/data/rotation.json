@@ -182,22 +182,46 @@
             {
                 "id": "A",
                 "label": "Lesson A",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
             },
             {
                 "id": "B",
                 "label": "Lesson B",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
             },
             {
                 "id": "C",
                 "label": "Lesson C",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 35
+                }
             },
             {
                 "id": "D",
                 "label": "Lesson D",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
             },
             {
                 "id": "IB",
@@ -402,22 +426,46 @@
             {
                 "id": "E",
                 "label": "Lesson E",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
             },
             {
                 "id": "F",
                 "label": "Lesson F",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
             },
             {
                 "id": "G",
                 "label": "Lesson G",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 35
+                }
             },
             {
                 "id": "H",
                 "label": "Lesson H",
-                "special": false
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
             },
             {
                 "id": "IB",
