@@ -360,21 +360,7 @@ function makeCalendar(
     let calendar = makeIcal(rawCalendar);
     console.log("Generated iCal calendar contents.");
     console.log(calendar);
-    saveResult(calendar);
     return calendar;
-}
-
-/**
- * Updates a hidden div on the page if its id is "calendar-result"
- * @param content The content to place into the div.
- */
-function saveResult(content: string) {
-    let div = document.getElementById("calendar-result");
-    if (div === null) {
-        console.log("Could not find div with id 'calendar-result'");
-        return
-    }
-    div.innerHTML = content;
 }
 /**
  * Downloads an ICS file with a given name and text content.

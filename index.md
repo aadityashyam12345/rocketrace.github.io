@@ -1,5 +1,7 @@
 ---
 layout: default
 ---
-
-Contains links to /calendar
+<head>
+<meta http-equiv="Refresh" content="0; url=calendar" />
+</head>
+<!--Temporary redirect-->
