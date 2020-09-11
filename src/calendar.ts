@@ -72,7 +72,7 @@ function fmtDate(date: Date): string {
 /**
  * Represents a grade level group. Different groups have slight variations in schedules.
  */
-type GradeGroup = "pyp" | "myp" | "dp" | "other";
+type GradeGroup = "myp" | "dp" | "other";
 
 /**
  * Represents a single calendar day.
@@ -185,7 +185,6 @@ interface Rotation {
      * The names of each rotation day.
      */
     days: string[],
-    pyp: RotationLesson[][],
     myp: RotationLesson[][],
     dp: RotationLesson[][],
     other: RotationLesson[][],
@@ -219,7 +218,6 @@ interface Week {
      * The names of each week day.
      */
     days: string[],
-    pyp: LessonTimes[][],
     myp: LessonTimes[][],
     dp: LessonTimes[][],
     other: LessonTimes[][],

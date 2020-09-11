@@ -6,25 +6,27 @@ exclude: true
 ---
 <!--This script sets up the input forms, and adds actions to the buttons.-->
 <script src="/src/calendar.js"></script>
+<h1>Get Your Calendar</h1>
 <div id="gradeState">
-    Please enter your grade level to begin! This will influence the timing of your lessons.
-    <br><select id="gradeInput" autofocus=true tabindex="0" required>
+    Thank you for using the CA Calendar Generator! To begin, please enter your grade level.
+    <br><select id="gradeInput" autofocus=true tabindex="0">
         <option value="">--Please choose a grade level--</option>
-        <option value="pyp">PYP (Grade 1-5)</option>
         <option value="myp">MYP (Grade 6-10)</option>
         <option value="dp">DP (Grade 11-12)</option>
         <option value="other">Other (teachers, parents, etc.)</option>
     </select>
-    <button id="gradeSubmit" tabindex="1">Continue</button>
+    <button id="gradeSubmit" tabindex="1">Submit</button>
     <div id="gradeRequiredError" hidden>
         <i>You must select a grade level before continuing!</i>
     </div>
 </div>
 <div id="lessonsState" hidden>
+    Please enter which lessons you have in each block.
+    <br>
     <div id="lessonInputs"></div>
-    <button id="lessonsSubmit">Submit lessons</button>
+    <button id="lessonsSubmit">Submit Lessons</button>
 </div>
 <div id="downloadState" hidden>
-    Thank you for using the CA Calendar Generator! Use the button below to download your calendar.
+    Thank you for using the CA Calendar Generator! Use the button below to download your new calendar.
     <br><button id="downloadCalendar">Download</button>
 </div>
