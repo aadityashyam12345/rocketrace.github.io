@@ -1,3 +1,5 @@
+let selectedGrade: null | GradeGroup = null;
+let generatedCalendar: null | string = null;
 /**
  * Reads a file from the web page, and returns its response content. 
  * If not found, returns `null`.
@@ -66,6 +68,11 @@ function fmtDate(date: Date): string {
     const ss = leftPad(seconds.toString(), "0", 2);
     return `${year}${mo}${dd}T${hh}${mm}${ss}`;
 }
+
+/**
+ * Represents a grade level group. Different groups have slight variations in schedules.
+ */
+type GradeGroup = "pyp" | "myp" | "dp" | "other";
 
 /**
  * Represents a single calendar day.
@@ -181,6 +188,7 @@ interface Rotation {
     pyp: RotationLesson[][],
     myp: RotationLesson[][],
     dp: RotationLesson[][],
+    other: RotationLesson[][],
 }
 
 /**
@@ -214,6 +222,7 @@ interface Week {
     pyp: LessonTimes[][],
     myp: LessonTimes[][],
     dp: LessonTimes[][],
+    other: LessonTimes[][],
 }
 
 /**
@@ -300,7 +309,7 @@ function makeEventIcal(event: Lesson, now: string, counter: number): string {
  * Generates a calendar from the given class decisions.
  */
 function makeCalendar(
-    grade: "pyp" | "myp" | "dp",
+    grade: GradeGroup,
     choices: LessonChoices
 ): string | null{
     const csvFile = loadFile("/src/data/calendar.csv");
@@ -308,6 +317,7 @@ function makeCalendar(
     const rotationFile = loadFile("/src/data/rotation.json");
     // Check whether any requests failed
     if (csvFile === null || timesFile === null || rotationFile === null) {
+        console.error("Failed to make request");
         alert("Could not load the calendar data! Try again later.");
         return null
     }
@@ -359,7 +369,6 @@ function makeCalendar(
     });
     let calendar = makeIcal(rawCalendar);
     console.log("Generated iCal calendar contents.");
-    console.log(calendar);
     return calendar;
 }
 /**
@@ -379,23 +388,111 @@ function download(filename: string, text: string) {
     document.body.removeChild(element);
 }
 
-const choices = {
-    "A": "Lesson A",
-    "B": "Lesson B",
-    "C": "Lesson C",
-    "D": "Lesson D",
-    "E": "Lesson E",
-    "F": "Lesson F",
-    "G": "Lesson G",
-    "H": "Lesson H",
+/**
+ * Generates the input forms for each lesson, based on the contents of `data/keys.json`.
+ * @param grade The selected grade level.
+ */
+function generateLessons(grade: GradeGroup) {
+    let prev = <HTMLDivElement>document.getElementById("gradeState");
+    prev.hidden = true;
+    let current = <HTMLDivElement>document.getElementById("lessonsState");
+    current.hidden = false;
+    let keysText = loadFile("/src/data/keys.json")
+    if (keysText === null) {
+        console.error("Failed to make request");
+        alert("Could not load the calendar data! Try again later.");
+        return;
+    }
+    let keys: LessonChoices = JSON.parse(keysText);
+    let inputs = <HTMLDivElement>document.getElementById("lessonInputs");
+    for (const key in keys) {
+        if (Object.prototype.hasOwnProperty.call(keys, key)) {
+            const label = keys[key];
+
+            let field = document.createElement("input");
+            field.id = `lesson_${key}`;
+            field.type = "text";
+            field.placeholder = label;
+            field.size = 20;
+            // Google and Apple seem to place no real limit on event labels.
+            // This should reduce the final file size, though.
+            field.maxLength = 1000;
+            inputs.appendChild(field);
+            inputs.appendChild(document.createElement("br"));
+        }
+    }
+}
+
+function generateDownload(calendar: string) {
+    let prev = <HTMLDivElement>document.getElementById("lessonsState");
+    prev.hidden = true;
+    let current = <HTMLDivElement>document.getElementById("downloadState");
+    current.hidden = false;
+}
+
+/**
+ * Shows or hides the "Grade level is required" error message.
+ */
+function showGradeError(hidden: boolean) {
+    const div = <HTMLDivElement>document.getElementById("gradeRequiredError");
+    div.hidden = hidden;
+}
+
+// === These functions are for buttons! ===
+/**
+ * Submits and stores the grade level of the user.
+ */
+function submitGrade() {
+    const input = <HTMLSelectElement>document.getElementById("gradeInput");
+    const grade = input.value;
+    if (grade === "") {
+        showGradeError(false);
+    }
+    else {
+        showGradeError(true);
+        selectedGrade = <GradeGroup>grade; // global
+        generateLessons(selectedGrade);
+    }
+}
+function submitLessons() {
+    let inputs = <HTMLDivElement>document.getElementById("lessonInputs");
+    const children = inputs.children;
+    let choices: LessonChoices = {};
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.tagName === "INPUT") {
+            const input = <HTMLInputElement>child;
+            choices[input.id.substring(7)] = input.value ? input.value : input.placeholder;
+        }
+    }
+    if (selectedGrade === null) {
+        console.error("Somehow the selected grade is not valid?");
+        alert("Something went wrong! Refresh and try again.")
+        return;
+    }
+    const calendar = makeCalendar(selectedGrade, choices);
+    if (calendar === null) {
+        console.error("Calendar could not be generated.");
+        alert("Could not generate a calendar. Please refresh and try again!");
+        return;
+    }
+    generatedCalendar = calendar;
+    generateDownload(generatedCalendar);
+}
+
+function downloadCalendar() {
+    if (generatedCalendar === null) {
+        console.error("A calendar was not properly generated");
+        return
+    }
+    download("calendar.ics", generatedCalendar);
 }
 
 window.onload = init;
 
 function init() {
-    let x = makeCalendar("dp", choices);
-    if (x !== null) {
-        // download("calendar.ics", x);
-    }
+    document.getElementById("gradeSubmit")!.onclick = submitGrade;
+    document.getElementById("lessonsSubmit")!.onclick = submitLessons;
+    document.getElementById("downloadCalendar")!.onclick = downloadCalendar;
 }
     
