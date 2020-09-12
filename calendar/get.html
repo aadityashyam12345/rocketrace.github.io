@@ -7,6 +7,7 @@ exclude: true
 <!--This script sets up the input forms, and adds actions to the buttons.-->
 <script src="/src/calendar.js"></script>
 <h1>Get Your Calendar</h1>
+<a href="/calendar"><em>Click here to go back to the main page</em></a>
 <div id="gradeState">
     Thank you for using the CA Calendar Generator! To begin, please enter your grade level.
     <br><select id="gradeInput" autofocus=true tabindex="0">
@@ -21,7 +22,7 @@ exclude: true
     </div>
 </div>
 <div id="lessonsState" hidden>
-    Please enter which lessons you have in each block.
+    Please enter which lessons you have in each block. Leave a block blank to omit it from the calendar completely.
     <br>
     <div id="lessonInputs"></div>
     <button id="lessonsSubmit">Submit Lessons</button>

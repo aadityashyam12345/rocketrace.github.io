@@ -225,7 +225,7 @@
             },
             {
                 "id": "IB",
-                "label": "IB rotations",
+                "label": "IB Rotations",
                 "special": true,
                 "time": {
                     "startHours": 13,
@@ -236,7 +236,7 @@
             },
             {
                 "id": "IB",
-                "label": "IB rotations",
+                "label": "IB Rotations",
                 "special": true,
                 "time": {
                     "startHours": 14,
@@ -469,7 +469,7 @@
             },
             {
                 "id": "IB",
-                "label": "IB rotations",
+                "label": "IB Rotations",
                 "special": true,
                 "time": {
                     "startHours": 13,
@@ -480,11 +480,947 @@
             },
             {
                 "id": "IB",
-                "label": "IB rotations",
+                "label": "IB Rotations",
                 "special": true,
                 "time": {
                     "startHours": 14,
                     "startMinutes": 25,
+                    "endHours": 15,
+                    "endMinutes": 25
+                }
+            }
+        ]
+    ],
+    "other": [
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 35
+                }
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
+            },
+            {
+                "id": "X",
+                "label": "Special Lessons",
+                "special": true,
+                "time": {
+                    "startHours": 13,
+                    "startMinutes": 15,
+                    "endHours": 15,
+                    "endMinutes": 25
+                }
+            }
+        ],
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 35
+                }
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
+            },
+            {
+                "id": "X",
+                "label": "Special Lessons",
+                "special": true,
+                "time": {
+                    "startHours": 13,
+                    "startMinutes": 15,
+                    "endHours": 14,
+                    "endMinutes": 15
+                }
+            }
+        ]
+    ],
+    "myp": [
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 25
+                }
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
+            },
+            {
+                "id": "ELO",
+                "label": "ELO",
+                "special": true,
+                "time": {
+                    "startHours": 13,
+                    "startMinutes": 15,
+                    "endHours": 15,
+                    "endMinutes": 25
+                }
+            }
+        ],
+        [
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            },
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "D",
+                "label": "Lesson D",
+                "special": false
+            },
+            {
+                "id": "A",
+                "label": "Lesson A",
+                "special": false
+            },
+            {
+                "id": "B",
+                "label": "Lesson B",
+                "special": false
+            },
+            {
+                "id": "C",
+                "label": "Lesson C",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false
+            },
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false
+            }
+        ],
+        [
+            {
+                "id": "E",
+                "label": "Lesson E",
+                "special": false,
+                "time": {
+                    "startHours": 8,
+                    "startMinutes": 30,
+                    "endHours": 9,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "F",
+                "label": "Lesson F",
+                "special": false,
+                "time": {
+                    "startHours": 9,
+                    "startMinutes": 40,
+                    "endHours": 10,
+                    "endMinutes": 30
+                }
+            },
+            {
+                "id": "G",
+                "label": "Lesson G",
+                "special": false,
+                "time": {
+                    "startHours": 10,
+                    "startMinutes": 40,
+                    "endHours": 11,
+                    "endMinutes": 25
+                }
+            },
+            {
+                "id": "H",
+                "label": "Lesson H",
+                "special": false,
+                "time": {
+                    "startHours": 12,
+                    "startMinutes": 15,
+                    "endHours": 13,
+                    "endMinutes": 10
+                }
+            },
+            {
+                "id": "ELO",
+                "label": "ELO",
+                "special": true,
+                "time": {
+                    "startHours": 13,
+                    "startMinutes": 15,
                     "endHours": 15,
                     "endMinutes": 25
                 }

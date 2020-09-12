@@ -5,6 +5,9 @@ let generatedCalendar: null | string = null;
  * If not found, returns `null`.
  *
  * Reads are done synchronously. The file path is relative to the current path.
+ * 
+ * TODO: Asynchronous requests? To be fair, this is only called three times in the whole script, 
+ * and each request is to the site itself, for assets.
  * @param path The path to the resource.
  */
 function loadFile(path: string): string | null {
@@ -304,7 +307,7 @@ function makeEventIcal(event: Lesson, now: string, counter: number): string {
 }
 
 /**
- * Generates a calendar from the given class decisions.
+ * Generates a calendar for the given grade level, using the given class decisions.
  */
 function makeCalendar(
     grade: GradeGroup,
@@ -352,6 +355,10 @@ function makeCalendar(
                 endTime.setHours(time.endHours, time.endMinutes, 0, 0);
                 // Special lessons override the label
                 let label = lesson.special ? lesson.label : choices[lesson.id]
+                // An empty label represents an empty choice
+                if (label === "") {
+                    continue
+                }
                 
                 rawCalendar.push(new Lesson(
                     lesson.id,
@@ -421,7 +428,10 @@ function generateLessons(grade: GradeGroup) {
     }
 }
 
-function generateDownload(calendar: string) {
+/**
+ * Makes the final download link visible.
+ */
+function generateDownload() {
     let prev = <HTMLDivElement>document.getElementById("lessonsState");
     prev.hidden = true;
     let current = <HTMLDivElement>document.getElementById("downloadState");
@@ -452,6 +462,12 @@ function submitGrade() {
         generateLessons(selectedGrade);
     }
 }
+/**
+ * Reads the user's lesson choices from the input fields.
+ * 
+ * Generates a calendar string using the given choices, and assigns the resulting 
+ * string to `generatedCalendar`.
+ */
 function submitLessons() {
     let inputs = <HTMLDivElement>document.getElementById("lessonInputs");
     const children = inputs.children;
@@ -460,7 +476,7 @@ function submitLessons() {
         const child = children[i];
         if (child.tagName === "INPUT") {
             const input = <HTMLInputElement>child;
-            choices[input.id.substring(7)] = input.value ? input.value : input.placeholder;
+            choices[input.id.substring(7)] = input.value ? input.value : "";
         }
     }
     if (selectedGrade === null) {
@@ -468,16 +484,19 @@ function submitLessons() {
         alert("Something went wrong! Refresh and try again.")
         return;
     }
-    const calendar = makeCalendar(selectedGrade, choices);
-    if (calendar === null) {
+    generatedCalendar = makeCalendar(selectedGrade, choices);
+    if (generatedCalendar === null) {
         console.error("Calendar could not be generated.");
         alert("Could not generate a calendar. Please refresh and try again!");
         return;
     }
-    generatedCalendar = calendar;
-    generateDownload(generatedCalendar);
+    generateDownload();
 }
 
+/**
+ * Trigger a download to the globally stored `generatedCalendar` object, as an ICS file.
+ * You should only call this after assigning to `generatedCalendar`.
+ */
 function downloadCalendar() {
     if (generatedCalendar === null) {
         console.error("A calendar was not properly generated");
