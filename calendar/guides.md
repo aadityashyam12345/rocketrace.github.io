@@ -13,7 +13,9 @@ permalink: /calendar/guides
 Go to the [calendar generation page](/calendar/get). You should be met with a page that asks for your grade level.
 Select it from the drop-down menu and click "Submit".
 
-A number of text boxes should appear. Here, fill in which lessons you have in each block. If you leave any of the boxes blank, it will be "ignored" in the resulting calendar file! Once yo're done, click "Submit Lessons" to generate your calendar.
+A number of text boxes should appear. Here, fill in which lessons you have in each block. If you leave any of the boxes blank, it will be "ignored" in the resulting calendar file! If you're a grade 11 or 12 student, you will also see a checkbox next to each block that can be selected to make that lesson an HL lesson. 
+
+Once you're done entering your lessons, click "Submit Lessons" to generate your calendar.
 
 At this point, you're done! Just click the "Download" button to download your calendar file, and you're ready to import it into your calendar apps!
 
