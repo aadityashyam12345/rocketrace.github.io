@@ -736,6 +736,17 @@
                 "time": {
                     "startHours": 13,
                     "startMinutes": 15,
+                    "endHours": 14,
+                    "endMinutes": 15
+                }
+            },
+            {
+                "id": "X",
+                "label": "Special Lessons",
+                "special": true,
+                "time": {
+                    "startHours": 14,
+                    "startMinutes": 25,
                     "endHours": 15,
                     "endMinutes": 25
                 }
@@ -971,6 +982,17 @@
                     "startMinutes": 15,
                     "endHours": 14,
                     "endMinutes": 15
+                }
+            },
+            {
+                "id": "X",
+                "label": "Special Lessons",
+                "special": true,
+                "time": {
+                    "startHours": 14,
+                    "startMinutes": 25,
+                    "endHours": 15,
+                    "endMinutes": 25
                 }
             }
         ]
