@@ -21,12 +21,8 @@ At this point, you're done! Just click the "Download" button to download your ca
 
 On your computer, visit [your Google Calendar page](https://calendar.google.com). In the bottom left corner, next to "Other Calendars", there's a plus button. Click it, and then select "Create New Calendar". Choose a name you like for your calendar (you can change this later). Make sure the time zone is set to GMT+9, or Japan Standard Time! Click the "Create Calendar" button to continue.
 
-You should now have a blank calendar. In order to add your lessons to it, go back to the Google Calendar main screen. Click the same plus button, and this time select "Import". When prompted, select the calendar file (it should be in your `Downloads`). In the drop-down menu, choose the blank calendar and click the "Import" button. After a short while, your calendar events should be visible!
+You should now have a blank calendar. In order to add your lessons to it, go back to the Google Calendar main screen. Click the same plus button, and this time select "Import". When prompted, select the calendar file (it should be in your `Downloads`). In the drop-down menu, choose the blank calendar and click the "Import" button. Be prepared to wait for a few of minutes at this point. After a short while, your calendar events should be visible!
 
 ## How do I import a calendar file into Apple Calendar?
 
-Once you download the calendar file on your computer, simply double click the file. (It should be in your `Downloads`, and should be named `calendar.ics` or something similar.) In the drop-down menu, select "New Calendar..." and click the "OK" button. After a short while, your calendar events should appear!
-
-## Does this calendar account for Day 9 schedules?
-
-**Yes!** The only exception to this is in February, in which a Day 9 overlaps with a Wednesday.
+Once you download the calendar file on your computer, simply double click the file. (It should be in your `Downloads`, and should be named `calendar.ics` or something similar.) In the drop-down menu, select "New Calendar..." and click the "OK" button. Be prepared to wait for a couple minutes as the events load. After a short while, your calendar events should appear!

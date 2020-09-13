@@ -16,7 +16,8 @@
             {
                 "id": "C",
                 "label": "Lesson C",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "D",
@@ -38,7 +39,8 @@
             {
                 "id": "G",
                 "label": "Lesson G",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "H",
@@ -60,7 +62,8 @@
             {
                 "id": "D",
                 "label": "Lesson D",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "A",
@@ -82,7 +85,8 @@
             {
                 "id": "H",
                 "label": "Lesson H",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "E",
@@ -104,7 +108,8 @@
             {
                 "id": "A",
                 "label": "Lesson A",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "B",
@@ -126,7 +131,8 @@
             {
                 "id": "E",
                 "label": "Lesson E",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "F",
@@ -148,7 +154,8 @@
             {
                 "id": "B",
                 "label": "Lesson B",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "C",
@@ -170,7 +177,8 @@
             {
                 "id": "F",
                 "label": "Lesson F",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "G",
@@ -260,7 +268,8 @@
             {
                 "id": "C",
                 "label": "Lesson C",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "D",
@@ -282,7 +291,8 @@
             {
                 "id": "G",
                 "label": "Lesson G",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "H",
@@ -304,7 +314,8 @@
             {
                 "id": "D",
                 "label": "Lesson D",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "A",
@@ -326,7 +337,8 @@
             {
                 "id": "H",
                 "label": "Lesson H",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "E",
@@ -348,7 +360,8 @@
             {
                 "id": "A",
                 "label": "Lesson A",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "B",
@@ -370,7 +383,8 @@
             {
                 "id": "E",
                 "label": "Lesson E",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "F",
@@ -392,7 +406,8 @@
             {
                 "id": "B",
                 "label": "Lesson B",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "C",
@@ -414,7 +429,8 @@
             {
                 "id": "F",
                 "label": "Lesson F",
-                "special": false
+                "special": false,
+                "hlExtension": { "hours": 0, "minutes": 20 }
             },
             {
                 "id": "G",

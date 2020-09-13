@@ -179,6 +179,12 @@ interface LessonCache {
 interface LessonChoices {
     [index: string]: string
 }
+/**
+ * Represents the user's HL lesson choices.
+ */
+interface HlChoices {
+    [index: string]: boolean
+}
 
 /**
  * Represents the lesson rotation template.
@@ -209,7 +215,14 @@ interface RotationLesson {
      * Whether or not the lesson is special
      */
     special: boolean,
+    /**
+     * Special time override
+     */
     time: LessonTimes | undefined
+    /**
+     * How long to extend the lesson for HL classes
+     */
+    hlExtension: {"hours": number, "minutes": number} | undefined
 }
 
 /**
@@ -311,7 +324,8 @@ function makeEventIcal(event: Lesson, now: string, counter: number): string {
  */
 function makeCalendar(
     grade: GradeGroup,
-    choices: LessonChoices
+    choices: LessonChoices,
+    hlChoices: HlChoices
 ): string | null{
     const csvFile = loadFile("/src/data/calendar.csv");
     const timesFile = loadFile("/src/data/times.json");
@@ -335,42 +349,54 @@ function makeCalendar(
     let firstHalf = true;
     source.forEach(entry => {
         let day = bridgeDay(entry, rotation.days, firstHalf);
+        console.log(day);
         // On day 9, check the toggle 
-        if (day.rotationDay in [8, 17]) {
+        if (day.rotationDay === 8 || day.rotationDay === 17) {
             // Toggle the boolean
             firstHalf = !firstHalf;
+            console.log("toggled");
         }
         let key = dayKey(day);
-        if (cache[key] === undefined) {
-            for (let i = 0; i < rotation[grade][day.rotationDay].length; i++) {
-                // This assumes that each valid combination of week day and 
-                // rotation has the same amount of lessons
-                const lesson = rotation[grade][day.rotationDay][i];
-                // If the lesson defines a special time, use that instead of the weekday time
-                const time = lesson.time === undefined ? times[grade][day.weekDay][i] : lesson.time;
-                // Clone the time, to avoid multible mutability
-                let startTime = copyDate(day.date);
-                let endTime = copyDate(day.date);
-                startTime.setHours(time.startHours, time.startMinutes, 0, 0);
-                endTime.setHours(time.endHours, time.endMinutes, 0, 0);
-                // Special lessons override the label
-                let label = lesson.special ? lesson.label : choices[lesson.id]
-                // An empty label represents an empty choice
-                if (label === "") {
-                    continue
-                }
-                
-                rawCalendar.push(new Lesson(
-                    lesson.id,
-                    label,
-                    startTime,
-                    endTime
-                ));
+        // if (cache[key] === undefined) {
+        for (let i = 0; i < rotation[grade][day.rotationDay].length; i++) {
+            // This assumes that each valid combination of week day and 
+            // rotation has the same amount of lessons
+            const lesson = rotation[grade][day.rotationDay][i];
+            // If the lesson defines a special time, use that instead of the weekday time
+            const time = lesson.time === undefined ? times[grade][day.weekDay][i] : lesson.time;
+            // Clone the time, to avoid multible mutability
+            let startTime = copyDate(day.date);
+            let endTime = copyDate(day.date);
+            startTime.setHours(time.startHours, time.startMinutes, 0, 0);
+            if (lesson.hlExtension !== undefined && hlChoices[lesson.id] === true) {
+                // Extend the lesson for HL folks!
+                const carry = time.endMinutes + lesson.hlExtension.minutes >= 60
+                endTime.setHours(
+                    time.endHours + lesson.hlExtension.hours + (carry ? 1 : 0), 
+                    (time.endMinutes + lesson.hlExtension.minutes) % 60
+                )
             }
+            else {
+                endTime.setHours(time.endHours, time.endMinutes, 0, 0);
+            }
+            // Special lessons override the label
+            let label = lesson.special ? lesson.label : choices[lesson.id]
+            // An empty label represents an empty choice
+            if (label === "") {
+                continue
+            }
+            
+            rawCalendar.push(new Lesson(
+                lesson.id,
+                label,
+                startTime,
+                endTime
+            ));
         }
-        else {
-            rawCalendar.concat(cache[key]);
-        }
+        // }
+        // else {
+        //     rawCalendar.concat(cache[key]);
+        // }
     });
     let calendar = makeIcal(rawCalendar);
     console.log("Generated iCal calendar contents.");
@@ -402,6 +428,10 @@ function generateLessons(grade: GradeGroup) {
     prev.hidden = true;
     let current = <HTMLDivElement>document.getElementById("lessonsState");
     current.hidden = false;
+    if (grade === "dp" || grade === "other") {
+        let notice = <HTMLDivElement>document.getElementById("lessonNotice");
+        notice.textContent += "Check each checkbox next to the class if it is an HL class!";
+    }
     let keysText = loadFile("/src/data/keys.json")
     if (keysText === null) {
         console.error("Failed to make request");
@@ -413,9 +443,9 @@ function generateLessons(grade: GradeGroup) {
     for (const key in keys) {
         if (Object.prototype.hasOwnProperty.call(keys, key)) {
             const label = keys[key];
-
+            
             let field = document.createElement("input");
-            field.id = `lesson_${key}`;
+            field.id = `lesson_name_${key}`;
             field.type = "text";
             field.placeholder = label;
             field.size = 20;
@@ -423,6 +453,15 @@ function generateLessons(grade: GradeGroup) {
             // This should reduce the final file size, though.
             field.maxLength = 1000;
             inputs.appendChild(field);
+            if (grade === "dp" || grade === "other") {
+                let hlQuestion = document.createElement("em");
+                hlQuestion.textContent = "   HL?"
+                let hlToggle = document.createElement("input");
+                hlToggle.id = `lesson_hl_${key}`;
+                hlToggle.type = "checkbox";
+                inputs.appendChild(hlQuestion);
+                inputs.appendChild(hlToggle);
+            }
             inputs.appendChild(document.createElement("br"));
         }
     }
@@ -472,11 +511,17 @@ function submitLessons() {
     let inputs = <HTMLDivElement>document.getElementById("lessonInputs");
     const children = inputs.children;
     let choices: LessonChoices = {};
+    let hlChoices: HlChoices = {};
     for (let i = 0; i < children.length; i++) {
         const child = children[i];
         if (child.tagName === "INPUT") {
             const input = <HTMLInputElement>child;
-            choices[input.id.substring(7)] = input.value ? input.value : "";
+            if (input.id.startsWith("lesson_name_")) {
+                choices[input.id.substring(12)] = input.value ? input.value : "";
+            }
+            else if (input.id.startsWith("lesson_hl_")) {
+                hlChoices[input.id.substring(10)] = input.checked;
+            }
         }
     }
     if (selectedGrade === null) {
@@ -484,7 +529,7 @@ function submitLessons() {
         alert("Something went wrong! Refresh and try again.")
         return;
     }
-    generatedCalendar = makeCalendar(selectedGrade, choices);
+    generatedCalendar = makeCalendar(selectedGrade, choices, hlChoices);
     if (generatedCalendar === null) {
         console.error("Calendar could not be generated.");
         alert("Could not generate a calendar. Please refresh and try again!");

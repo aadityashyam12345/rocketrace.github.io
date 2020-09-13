@@ -35,6 +35,7 @@ Subject,Date,StartTime,EndTime,EventNotes,EventDetail,EventType
 "Day 7","10/07/2020","","","","","Event" 
 "Day 8","10/08/2020","","","","","Event" 
 "Day 9","10/09/2020","","","","","Event" 
+"Day 6","10/12/2020","","","This line has been appended to the original file","","Event" 
 "Day 1","10/13/2020","","","","","Event" 
 "Day 2","10/14/2020","","","","","Event" 
 "Day 3","10/15/2020","","","","","Event" 
