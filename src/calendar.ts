@@ -368,7 +368,7 @@ function makeCalendar(
             let startTime = copyDate(day.date);
             let endTime = copyDate(day.date);
             startTime.setHours(time.startHours, time.startMinutes, 0, 0);
-            if (lesson.hlExtension !== undefined && hlChoices[lesson.id] === true) {
+            if (lesson.hlExtension !== undefined && hlChoices[lesson.id] === true && day.weekDay !== 2) {
                 // Extend the lesson for HL folks!
                 const carry = time.endMinutes + lesson.hlExtension.minutes >= 60
                 endTime.setHours(
